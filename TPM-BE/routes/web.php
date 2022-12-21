@@ -18,3 +18,7 @@ Route::get('/home', [ProductController::class, 'index'])->name('index');
 Route::get('/create-product', [ProductController::class, 'create'])->name('create');
 Route::post('/store-product', [ProductController::class,'store'])->name('store');
 Route::get('/show-product/{id}', [ProductController::class, 'show'])->name('show');
+Route::get('/edit-product/{id}', [ProductController::class, 'edit'])->name('edit');
+Route::patch('/update-product/{id}', [ProductController::class, 'update'])->name('update');
+Route::delete('/delete-product/{id}', [ProductController::class, 'delete'])->name('delete');
+

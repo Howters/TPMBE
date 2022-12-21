@@ -35,11 +35,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $extension = $request -> file('Image')->getClientOriginalExtension();
+        $filename = $request -> NamaMakanan.'_'.$request->AsalMakanan.'.'.$extension;
+
+        $request->file('Image')->storeAs('/public/Product/', $filename);
         Product::create([
             'NamaMakanan' => $request->NamaMakanan,
             'AsalMakanan' => $request->AsalMakanan,
             'TanggalExpired' => $request->TanggalExpired,
-            'Kuantitas' => $request->Kuantitas
+            'Kuantitas' => $request->Kuantitas,
+            'Image' => $filename
         ]);
         return redirect('/home');
     }
@@ -53,7 +58,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::findorfail($id);
-        return view('showProduct', compact('product'));
+        return view('showProduct', compact('products'));
     }
 
     /**
@@ -63,8 +68,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $product  = Product ::findorfail($id);
+        return view ('editProduct', compact ('products'));
     }
 
     /**
@@ -75,8 +80,22 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+
+    {  
+        
+        $extension = $request -> file('Image')->getClientOriginalExtension();
+        $filename = $request -> NamaMakanan.'_'.$request->AsalMakanan.'.'.$extension;
+
+        $request->file('Image')->storeAs('/public/Product/', $filename);
+        Product::findorfail($id)->update([
+            'NamaMakanan' => $request->NamaMakanan,
+            'AsalMakanan' => $request->AsalMakanan,
+            'TanggalExpired' => $request->TanggalExpired,
+            'Kuantitas' => $request->Kuantitas,
+            'Image' => $filename
+        ]);
+
+        return redirect('/home');
     }
 
     /**
@@ -85,8 +104,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete ($id)
     {
-        //
+        Product::destroy ($id);
+
+        return redirect ('/home');
     }
 }

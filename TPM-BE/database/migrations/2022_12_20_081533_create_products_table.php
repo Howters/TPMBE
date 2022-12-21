@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('AsalMakanan');
             $table->date('TanggalExpired');
             $table->integer('Kuantitas');
+            $table->string('Image');
             $table->timestamps();
         });
     }

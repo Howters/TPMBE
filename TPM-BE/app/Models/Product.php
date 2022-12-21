@@ -13,6 +13,7 @@ class Product extends Model
         'NamaMakanan',
         'AsalMakanan',
         'TanggalExpired',
-        'Kuantitas'
+        'Kuantitas',
+        'Image'
     ];
 }
