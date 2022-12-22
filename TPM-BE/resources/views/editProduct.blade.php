@@ -4,7 +4,7 @@
 
 @section ('body')
 
-<form action="/update-product/{{$product->id}}" method = "POST" >
+<form action="/update-product/{{$product->id}}" method = "POST"  enctype="multipart/form-data">
     @csrf
     @method('patch')
     <div class="mb-3">
@@ -25,8 +25,14 @@
         <label for="exampleInputPassword1" class="form-label">Kuantitas</label>
         <input type="number" class="form-control" id="exampleInputPassword1" name = "Kuantitas" value = "{{$product->Kuantitas}}">
       </div>
-   
+   <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label" >Image</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="Image" value= "{{old('Image')}}">
+    @error('Image')is-invalid
+    <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+</div>
  
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-  
+  @endsection

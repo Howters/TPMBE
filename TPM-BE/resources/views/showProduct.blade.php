@@ -10,6 +10,7 @@
       <h6 class="card-subtitle mb-2 text-muted">{{$product->AsalMakanan}}</h6>
       <p class="card-text">{{$product->TanggalExpired}}</p>
       <p class="card-text">{{$product->Kuantitas}}</p>
+      <p class="card-text">{{$product->category->nama}}</p>
       <a href="#" class="card-link">Card link</a>
       <a href="#" class="card-link">Another link</a>
     </div>

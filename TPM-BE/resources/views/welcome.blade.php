@@ -7,7 +7,7 @@
 <div class="d-flex m-5">
     @foreach ($products as $product)
     <div class="card" style="width: 18rem;">
-        <img src="{{asset('/storage/Product/'.$product->image)}}" class="card-img-top" alt="...">
+        <img src="{{asset('/storage/Product/'.$product->Image)}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{$product->NamaMakanan}}</h5>
             <p class="card-text">{{$product->AsalMakanan}}</p>

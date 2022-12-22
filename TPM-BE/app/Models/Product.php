@@ -14,6 +14,12 @@ class Product extends Model
         'AsalMakanan',
         'TanggalExpired',
         'Kuantitas',
-        'Image'
+        'Image',
+        'category_id'
+
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
